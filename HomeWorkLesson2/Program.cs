@@ -1,42 +1,17 @@
-﻿using System;
+﻿using ClassLibraryForHomeWork;
+using System;
 
-namespace HomeWorkLesson2
+namespace HomeWork
 {
     class Program
     {
-        public static int MathTwoNumber(int a, int b)
-        {
-            int result;
-
-            if (a > b)
-            {
-                result = a + b;
-            }
-            else if (a == b)
-            {
-                result = a * b;
-            }
-            else
-            {
-                result = a - b;
-            }
-
-            return result;
-        }
-
-        public static int InputWhithConsole()
-        {
-            Console.WriteLine("How many entering number? Enter number");
-            int enterNumberCount = Convert.ToInt32(Console.ReadLine());
-            return enterNumberCount;
-        }
-
         static void Main(string[] args)
         {
-            //int a = Convert.ToInt32(Console.ReadLine());
-            //int b = Convert.ToInt32(Console.ReadLine());
+            LibraryFromTask.ChoosingJobTask();
+            (int numbera, int numberb, int numberc, int numberd) = LibraryFromTask.InputWhithConsole();
 
-            Console.WriteLine(InputWhithConsole());
+            (double x, double y) = Convert.ToDouble(LibraryFromTask.QuadraticEquations((int)numbera, (int)numberb, (int)numberc),(int)numberd));
+            Console.WriteLine($"Result {x}, {y}");
         }
     }
 }
