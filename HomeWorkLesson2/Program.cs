@@ -10,8 +10,11 @@ namespace HomeWork
             LibraryFromTask.ChoosingJobTask();
             (int numbera, int numberb, int numberc, int numberd) = LibraryFromTask.InputWhithConsole();
 
-            (double x, double y) = Convert.ToDouble(LibraryFromTask.QuadraticEquations((int)numbera, (int)numberb, (int)numberc),(int)numberd));
-            Console.WriteLine($"Result {x}, {y}");
+            (double? x1, double? x2) = LibraryFromTask.QuadraticEquations(
+                (int)numbera, 
+                (int)numberb, 
+                (int)numberc);
+            Console.WriteLine($"Result {x1}, {x2}");
         }
     }
 }

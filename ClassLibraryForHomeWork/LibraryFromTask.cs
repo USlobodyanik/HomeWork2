@@ -185,10 +185,26 @@ namespace ClassLibraryForHomeWork
             return (a, b, c);
         }
 
-        public static (double x, double y) QuadraticEquations(int x1, int x2, int y1, int y2)
+        public static (double? x1, double? x2) QuadraticEquations(int a, int b, int c)
         {
-            double x = (y1 - y2) / (x1 - x2);
-            return (x, y2 - x * x2);
+            double d = b * b - 4 * a * c;
+            if (d == 0)
+            {
+                double x = -b / (2 * a);
+
+                return (x, x);
+            }
+            else if (d > 0)
+            {
+                double x1 = (-b + Math.Sqrt(d)) / (2 * a);
+                double x2 = (-b - Math.Sqrt(d)) / (2 * a);
+
+                return (x1, x2);
+            }
+            else
+            {
+                return (null, null);
+            }
         }
     }
 }
