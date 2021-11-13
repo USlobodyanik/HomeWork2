@@ -3,7 +3,7 @@ using System;
 
 namespace HomeWork
 {
-    class Program
+    class ProgramTestHWL2
     {
         static void Main(string[] args)
         {
