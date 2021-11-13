@@ -6,7 +6,13 @@ namespace ClassLibraryForHomeWork
     {
         public static void ChoosingJobTask()
         {
-            int taskNumber;
+            int taskNumber = 0;
+            int result;
+            string strResult;
+            int? numbera = null;
+            int? numberb = null;
+            int? numberc = null;
+            int? numberd = null;
 
             Console.WriteLine("Choosing a task №: ");
             string temp = Console.ReadLine();
@@ -20,15 +26,31 @@ namespace ClassLibraryForHomeWork
                 {
                     case 1:
                         Console.Write($"User enters 2 numbers (A and B){Environment.NewLine}");
+                        (numbera, numberb, numberc, numberd) = InputWhithConsole(taskNumber);
+                        result = MathTwoNumber((int)numbera, (int)numberb);
+                        Console.WriteLine($"Rusult for Task1/ Math two numbers: {result}");
                         break;
                     case 2:
                         Console.Write($"User enters 2 numbers (X and Y){Environment.NewLine}");
+                        (numbera, numberb, numberc, numberd) = InputWhithConsole(taskNumber);
+                        strResult = QuarterNumber((int)numbera, (int)numberb);
+                        Console.WriteLine($"Rusult for Task2/ Quarter Number: {strResult}");
                         break;
                     case 3:
                         Console.Write($"The user enters 3 numbers (A, B and C){Environment.NewLine}");
+                        (numbera, numberb, numberc, numberd) = InputWhithConsole(taskNumber);
+                        (int minNumber, int secondNumber, int maxNumber) = NumberSort((int)numbera, (int)numberb, (int)numberc);
+                        Console.WriteLine($"Rusult for Task3/ Number sort: " +
+                            $"{minNumber} " +
+                            $"{secondNumber} " +
+                            $"{maxNumber}");
                         break;
                     case 4:
                         Console.Write($"The user enters 3 numbers (A, B and C){Environment.NewLine}");
+                        (numbera, numberb, numberc, numberd) = InputWhithConsole(taskNumber);
+                        (double? x1, double? x2) = QuadraticEquations((int)numbera, (int)numberb, (int)numberc);
+                        Console.WriteLine($"Rusult for Task4/ Quadratic Equations: {Environment.NewLine}" +
+                            $" X1 = {x1}; X2 = {x1}");
                         break;
                     default:
                         Console.Write($"Thank you for the attention! Have a nice day{Environment.NewLine}");
@@ -41,22 +63,33 @@ namespace ClassLibraryForHomeWork
             }
         }
 
-        public static (int numbera, int numberb, int numberc, int numberd) InputWhithConsole()
+        public static (int? numbera, int? numberb, int? numberc, int? numberd) InputWhithConsole(int selectedTask)
         {
-            int enterNumberCount;
-            int numbera = 0;
-            int numberb = 0;
-            int numberc = 0;
-            int numberd = 0;
+            int enterNumberCount = 0;
+            int? numbera = null;
+            int? numberb = null;
+            int? numberc = null;
+            int? numberd = null;
 
-            Console.WriteLine("How many digits do need to enter for the calculation? Enter the number: ");
-            string temp = Console.ReadLine();
-
-            bool success = int.TryParse(temp, out enterNumberCount);
-
-            if (success)
+            switch(selectedTask)
             {
-                enterNumberCount = Convert.ToInt32(temp);
+                case 1:
+                    enterNumberCount = 2;
+                    break;
+                case 2:
+                    enterNumberCount = 2;
+                    break;
+                case 3:
+                    enterNumberCount = 3;
+                    break;
+                case 4:
+                    enterNumberCount = 3;
+                    break;
+                default:
+                    Console.Write($"Thank you for the attention! Have a nice day{Environment.NewLine}");
+                    break;
+            }
+
                 switch (enterNumberCount)
                 {
                     case 1:
@@ -91,11 +124,6 @@ namespace ClassLibraryForHomeWork
                         Console.Write("Thank you for the attention! Have a nice day");
                         break;
                 }
-            }
-            else
-            {
-                Console.WriteLine("Input Error! Enter whole numbers");
-            }
 
             return (numbera, numberb, numberc, numberd);
         }
